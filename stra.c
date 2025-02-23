@@ -39,7 +39,6 @@ char *Str_concat(char dest[], const char src[]) {
 
 int Str_compare(const char str1[], const char str2[])  { 
     size_t uLength = 0;
-    int trueOrFalse = 1; 
     assert(str1 != NULL && str2 != NULL); 
     while (str1[uLength] != '\0' && str2[uLength] != '\0') { 
         if (str1[uLength] != str2[uLength]) {
