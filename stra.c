@@ -69,6 +69,7 @@ char *Str_search(const char haystack[], const char needle[]) {
     if (haystackSize < needleSize) return NULL;
     while (uLength <= haystackSize - needleSize) {
         if (*pc == needle[0]) { 
+            needleIteration = 1;
             isContained = 1; 
             while (needleIteration < needleSize ) { 
                 if (needle[needleIteration] != haystack[needleIteration + uLength]) { 
