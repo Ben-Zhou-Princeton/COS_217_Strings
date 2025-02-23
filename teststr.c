@@ -500,6 +500,8 @@ static void testSearch(void)
       const char acHaystack[] = "";
       const char acNeedle[] = "abcde";
       pcResult1 = Str_search(acHaystack, acNeedle);
+      printf("%s\n", pcResult2);
+      printf("%s\n", pcResult1);
       pcResult2 = strstr(acHaystack, acNeedle);
       ASSURE(pcResult1 == pcResult2);
    }
@@ -520,8 +522,6 @@ static void testSearch(void)
       const char acNeedle[] = "d";
       pcResult1 = Str_search(acHaystack, acNeedle);
       pcResult2 = strstr(acHaystack, acNeedle);
-      /*printf("%c\n", pcResult1); */
-      printf("%s\n", pcResult2);
       ASSURE(pcResult1 == pcResult2);
    }
 
