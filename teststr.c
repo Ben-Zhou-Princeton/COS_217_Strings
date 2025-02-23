@@ -152,8 +152,10 @@ static void testCopy(void)
       pcResult = Str_copy(acDest1, acSrc);
       ASSURE(pcResult == acDest1);
       (void)strcpy(acDest2, acSrc);
-      printf(acDest1); 
-      printf(acDest2);
+      printf(acDest1[0]); 
+      printf(acDest1[1]); 
+      printf(acDest2[0]);
+      printf(acDest2[1]);
       ASSURE(memcmp(acDest1, acDest2, sizeof(acDest1)) == 0);
    }
 
