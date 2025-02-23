@@ -40,19 +40,23 @@ char *Str_concat(char dest[], const char src[]) {
 int Str_compare(const char str1[], const char str2[])  { 
     size_t uLength = 0;
     int trueOrFalse = 1; 
-    assert(str1 != NULL && str2 != NULL);
-    while (str1[uLength] != '\0') { 
-    
+    assert(str1 != NULL && str2 != NULL); 
+    while (str1[uLength] != '\0' && str2[uLength] != '\0') { 
         if (str1[uLength] != str2[uLength]) {
-            trueOrFalse = 0; 
+            if (str1[uLength] > str2[uLength]) { 
+                return 1; 
+            }
+            else return -1;
         } 
-        if (Str_getLength(str1) != Str_getLength(str2)) { 
-            trueOrFalse = 0; 
-        }
         uLength++; 
-        
     }
-    return trueOrFalse;
+
+    if (str1[uLength] > str2[uLength]) { 
+        return 1; 
+    }
+    else if (str1[uLength] < str2[uLength]) return -1;
+
+    return 0;
 }
 
 char *Str_search(const char haystack[], const char needle[]) { 
