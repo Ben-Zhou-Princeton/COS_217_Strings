@@ -58,6 +58,8 @@ char *Str_search(const char haystack[], const char needle[]) {
     size_t uLength = 0; 
     size_t haystackSize = Str_getLength(haystack);
     size_t needleSize = Str_getLength(needle); 
+    char *returnArray [haystackSize]; 
+    
     assert(haystack != NULL && needle != NULL);
 
     if (Str_getLength(needle) == 0) {
@@ -88,7 +90,7 @@ char *Str_search(const char haystack[], const char needle[]) {
     if (marker == -1) { 
         return NULL; 
     }
-    char *returnArray [haystackSize - marker]; 
+    
     while (marker < haystackSize) {
         returnArray[marker] = haystack[marker]; 
         marker++; 
