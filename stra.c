@@ -24,13 +24,14 @@ char *Str_copy(char dest[], const char src[])
     return dest; 
 } 
 char *Str_concat(char dest[], const char src[]) { 
-    size_t srcLength = Str_getLength(src);
+    size_t destLength = Str_getLength(dest); 
     size_t currentIndex = 0; 
     assert(dest != NULL && src != NULL);
-    while (currentIndex < srcLength) {
-        dest[srcLength + currentIndex] = src[currentIndex];
+    while (src[currentIndex] != '\0') {
+        dest[destLength + currentIndex] = src[currentIndex];
         currentIndex++;  
     }
+    dest[currentIndex] = '\0'; 
 
     return dest; 
 }
