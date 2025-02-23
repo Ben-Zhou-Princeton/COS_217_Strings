@@ -14,9 +14,13 @@ size_t Str_getLength(const char pcSrc[])
 char *Str_copy(char dest[], const char src[])
 {   
     size_t uLength = 0; 
+    size_t srcLength = Str_getLength(src); 
     assert(src != NULL && dest != NULL);
-    while(src[uLength] != '\0') {
+    while(uLength < srcLength) {
         dest[uLength] = src[uLength];
+        if (src[uLength == '\0']) { 
+            break; 
+        }
         uLength++; 
     }
     return dest; 
@@ -84,9 +88,6 @@ char *Str_search(const char haystack[], const char needle[]) {
     }
 
     return NULL; 
-
-
-
 } 
 
  
