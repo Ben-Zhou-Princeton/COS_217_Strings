@@ -52,8 +52,9 @@ int Str_compare(const char str1[], const char str2[])  {
 }
 
 char *Str_search(const char haystack[], const char needle[]) { 
-    size_t marker = -1; 
+    int marker = -1; 
     size_t isContained;
+    size_t needleIteration; 
     size_t uLength = 0; 
     size_t haystackSize = Str_getLength(haystack);
     size_t needleSize = Str_getLength(needle); 
@@ -64,7 +65,7 @@ char *Str_search(const char haystack[], const char needle[]) {
     } 
 
     while (uLength < haystackSize) { 
-        size_t needleIteration = 1; 
+        needleIteration = 1; 
         if (haystack[uLength] == needle[0]) { 
             isContained = 1; 
             while (needleIteration < needleSize
