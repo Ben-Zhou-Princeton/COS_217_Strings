@@ -52,7 +52,7 @@ int Str_compare(const char str1[], const char str2[])  {
 }
 
 char *Str_search(const char haystack[], const char needle[]) { 
-    int marker = -1; 
+    const char* pc = haystack; 
     size_t isContained;
     size_t needleIteration; 
     size_t uLength = 0; 
@@ -62,41 +62,30 @@ char *Str_search(const char haystack[], const char needle[]) {
     
     assert(haystack != NULL && needle != NULL);
 
-    if (Str_getLength(needle) == 0) {
+    if (needleSize == 0) {
         return haystack; 
     } 
-
-    while (uLength < haystackSize) { 
+    while (uLength < haystackSize) {
         needleIteration = 1; 
-        if (haystack[uLength] == needle[0]) { 
+        if (pc == needle[0]) { 
             isContained = 1; 
-            while (needleIteration < needleSize
+            while (needleIteration < needleSize 
             && needleIteration + uLength < haystackSize) { 
                 if (needle[needleIteration] != haystack[needleIteration + uLength]) { 
                     isContained = 0; 
                 }
                 needleIteration++; 
             }
-            
         }
         if (isContained == 1) { 
-                marker = uLength; 
-                break; 
-            }
-
+            pc = haystack[uLength]; 
+            break; 
+        }
         uLength++; 
     }
 
-    if (marker == -1) { 
-        return NULL; 
-    }
-    
-    while (marker < haystackSize) {
-        returnArray[marker] = haystack[marker]; 
-        marker++; 
-    }
 
-    return returnArray; 
+    return (char*) pc; 
 
 } 
 
