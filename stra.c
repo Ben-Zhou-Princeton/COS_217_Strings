@@ -1,5 +1,6 @@
 #include "str.h"
 #include <stddef.h>
+#include <assert.h>
 
 size_t Str_getLength(const char pcSrc[])
 {
@@ -11,32 +12,30 @@ size_t Str_getLength(const char pcSrc[])
 }
 
 char *Str_copy(char dest[], const char src[])
-{
+{   
     size_t uLength = 0; 
     assert(src != NULL && dest != NULL);
     while(src[uLength != '\0']) {
         dest[uLength] = src[uLength];
         uLength++; 
     }
-    return *dest; 
+    return dest; 
 } 
 char *Str_concat(char dest[], const char src[]) { 
-    assert(dest != NULL && src != NULL);
-    size_t destLength = Str_getLength(dest); 
     size_t srcLength = Str_getLength(src);
     size_t currentIndex = 0; 
-
+    assert(dest != NULL && src != NULL);
     while (currentIndex < srcLength) {
         dest[srcLength + currentIndex] = src[currentIndex];
         currentIndex++;  
     }
 
-    return *dest; 
+    return dest; 
 }
 
 int Str_compare(const char str1[], const char str2[])  { 
     size_t uLength = 0;
-    size_t trueOrFalse = 1; 
+    int trueOrFalse = 1; 
     assert(str1 != NULL && str2 != NULL);
     while (str1[uLength] != '\0') { 
     
@@ -53,16 +52,16 @@ int Str_compare(const char str1[], const char str2[])  {
 }
 
 char *Str_search(const char haystack[], const char needle[]) { 
-    assert(haystack != NULL && needle != NULL);
+    size_t marker = -1; 
+    size_t isContained;
     size_t uLength = 0; 
     size_t haystackSize = Str_getLength(haystack);
     size_t needleSize = Str_getLength(needle); 
+    assert(haystack != NULL && needle != NULL);
 
     if (Str_getLength(needle) == 0) {
         return haystack; 
-    }
-    size_t marker = -1; 
-    size_t isContained; 
+    } 
 
     while (uLength < haystackSize) { 
         size_t needleIteration = 1; 
