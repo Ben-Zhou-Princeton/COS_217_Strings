@@ -16,13 +16,14 @@ char *Str_copy(char dest[], const char src[])
     size_t uLength = 0; 
     size_t srcLength = Str_getLength(src); 
     assert(src != NULL && dest != NULL);
-    while(uLength < srcLength) {
+    while(uLength < srcLength + 1) {
         dest[uLength] = src[uLength];
         if (src[uLength == '\0']) { 
             break; 
         }
         uLength++; 
     }
+    
     return dest; 
 } 
 char *Str_concat(char dest[], const char src[]) { 
