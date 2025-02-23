@@ -511,7 +511,10 @@ static void testSearch(void)
       const char acNeedle[] = "abcde";
       pcResult1 = Str_search(acHaystack, acNeedle);
       pcResult2 = strstr(acHaystack, acNeedle);
+      printf("%s\n", pcResult2);
+      printf("%s\n", pcResult1);
       ASSURE(pcResult1 == pcResult2);
+      
    }
 
    printf("   Statement Tests\n");
