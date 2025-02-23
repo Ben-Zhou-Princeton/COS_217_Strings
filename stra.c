@@ -8,7 +8,7 @@ size_t Str_getLength(const char pcSrc[])
    assert(pcSrc != NULL);
    while (pcSrc[uLength] != '\0')
       uLength++;
-   return uLength + 1;
+   return uLength;
 }
 
 char *Str_copy(char dest[], const char src[])
@@ -82,6 +82,7 @@ char *Str_search(const char haystack[], const char needle[]) {
         }
         uLength++; 
     }
+
     return NULL; 
 
 
