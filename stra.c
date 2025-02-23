@@ -28,9 +28,10 @@ char *Str_concat(char dest[], const char src[]) {
     size_t currentIndex = 0; 
     assert(dest != NULL && src != NULL);
     while (src[currentIndex] != '\0') {
-        dest[destLength + currentIndex] = src[currentIndex];
+        dest[destLength + currentIndex + 1] = src[currentIndex];
         currentIndex++;  
     }
+
     dest[currentIndex] = '\0'; 
 
     return dest; 
