@@ -56,9 +56,9 @@ char *Str_search(const char haystack[], const char needle[]) {
     size_t isContained;
     size_t needleIteration; 
     size_t uLength = 0; 
-    size_t haystackSize = Str_getLength(haystack);
-    size_t needleSize = Str_getLength(needle); 
-    char *returnArray [haystackSize]; 
+    int haystackSize = Str_getLength(haystack);
+    int needleSize = Str_getLength(needle); 
+    char returnArray [haystackSize]; 
     
     assert(haystack != NULL && needle != NULL);
 
