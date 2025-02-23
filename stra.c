@@ -50,11 +50,8 @@ int Str_compare(const char str1[], const char str2[])  {
         uLength++; 
     }
 
-    if (str1[uLength] > str2[uLength]) { 
-        return 1; 
-    }
+    if (str1[uLength] > str2[uLength]) return 1; 
     else if (str1[uLength] < str2[uLength]) return -1;
-
     return 0;
 }
 
@@ -70,13 +67,12 @@ char *Str_search(const char haystack[], const char needle[]) {
 
     if (needleSize == 0) {
         return (char*)pc; 
-    } 
-    while (uLength < haystackSize) {
+    }
+    while (uLength < haystackSize - needleSize) {
         needleIteration = 1; 
         if (*pc == needle[0]) { 
             isContained = 1; 
-            while (needleIteration < needleSize 
-            && needleIteration + uLength < haystackSize) { 
+            while (needleIteration < needleSize ) { 
                 if (needle[needleIteration] != haystack[needleIteration + uLength]) { 
                     isContained = 0; 
                 }
@@ -84,9 +80,9 @@ char *Str_search(const char haystack[], const char needle[]) {
             }
         }
         if (isContained == 1) { 
-            pc = haystack + uLength; 
             return (char*)pc;  
         }
+        pc++; 
         uLength++; 
     }
 
