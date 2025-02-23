@@ -172,6 +172,8 @@ static void testCopy(void)
       const char acSrc[] = {'R', 'u', 't', 'h', '\0', 's'};
       char acDest1[] = {'d', 'd', 'd', 'd', 'd', 'd'};
       char acDest2[] = {'d', 'd', 'd', 'd', 'd', 'd'};
+      printf("%s\n", acDest1);
+      printf("%s\n", acSrc);
       pcResult = Str_copy(acDest1, acSrc);
       ASSURE(pcResult == acDest1);
       (void)strcpy(acDest2, acSrc);
