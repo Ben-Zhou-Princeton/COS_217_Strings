@@ -61,8 +61,8 @@ int Str_compare(const char *str1, const char *str2) {
         str1End++;
         str2End++; 
     }
-    if (*str1End > str2End) return 1; 
-    else if (str1End < str2End) return -1;
+    if (*str1End > *str2End) return 1; 
+    else if (*str1End < *str2End) return -1;
     return 0;
 
 }
