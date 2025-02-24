@@ -44,15 +44,26 @@ char *Str_concat(char *dest, const char *src) {
     }
     *destEnd = '\0';
     return dest; 
-
-
-
-
-
-
 }
 int Str_compare(const char *str1, const char *str2) { 
-    return 0; 
+    const char *str1End; 
+    const char *str2End; 
+    assert(str1 != NULL && str2 != NULL); 
+    str1End = str1;
+    str2End = str2; 
+    while (*str1End != '\0' && *str2End != '\0') { 
+        if (*str1End != *str2End) {
+            if (*str1End > *str2End) {
+                return 1; 
+            }
+            else return -1; 
+        }
+        str1End++;
+        str2End++; 
+    }
+    if (*str1End > str2End) return 1; 
+    else if (str1End < str2End) return -1;
+    return 0;
 
 }
 char *Str_search(const char *haystack, const char *needle) { 
