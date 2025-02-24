@@ -91,8 +91,9 @@ char *Str_search(const char *haystack, const char *needle) {
                 needleEnd++;
                 haystackTracker++; 
             }
+            needleEnd = needle; 
+
         }
-        needleEnd = needle; 
         if (isContained == 1) { 
             return (char*) haystackEnd; 
         }
