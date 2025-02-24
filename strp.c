@@ -79,8 +79,9 @@ char *Str_search(const char *haystack, const char *needle) {
     
     if (needleSize == 0) return (char*) haystackEnd; 
     if (haystackSize < needleSize) return NULL;
+
     while (*haystackEnd != '\0') { 
-        if (*haystackEnd == *needleEnd) { 
+        if (*haystackEnd == *needleEnd) {
             isContained = 1; 
             haystackTracker = haystackEnd; 
             while (*haystackTracker != '\0' && *needleEnd != '\0') { 
@@ -91,14 +92,15 @@ char *Str_search(const char *haystack, const char *needle) {
                 needleEnd++;
                 haystackTracker++; 
             }
-            needleEnd = needle; 
-
         }
-        if (isContained == 1) { 
+        if (isContained == 1 && *needleEnd != '\0') { 
             return (char*) haystackEnd; 
         }
         haystackEnd++; 
+        needleEnd = needle; 
+
     }
+
     return NULL; 
 
 
