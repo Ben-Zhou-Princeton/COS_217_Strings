@@ -29,7 +29,26 @@ char *Str_copy(char *dest, const char *src) {
     return dest; 
 } 
 char *Str_concat(char *dest, const char *src) { 
-    return "abcde"; 
+    char *destEnd; 
+    char *srcEnd; 
+    assert(src != NULL && dest != NULL);
+    destEnd = dest;
+    srcEnd = src; 
+    while (*destEnd != '\0') { 
+        destEnd++; 
+    }
+    while (*srcEnd != '\0') { 
+        *destEnd = *srcEnd; 
+        destEnd++;
+        srcEnd++; 
+    }
+    *destEnd = '\0';
+    return dest; 
+
+
+
+
+
 
 }
 int Str_compare(const char *str1, const char *str2) { 
