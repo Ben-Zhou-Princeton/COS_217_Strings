@@ -62,7 +62,7 @@ static size_t replaceAndWrite(const char pcLine [],
          }
          
       } 
-      else printf(pcLine[uLength]); 
+      else printf("%c", pcLine[uLength]); 
       uLength++; 
    }
 
