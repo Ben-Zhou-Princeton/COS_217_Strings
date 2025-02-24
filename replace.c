@@ -28,7 +28,7 @@ static size_t replaceAndWrite(const char pcLine [],
    size_t iterator = 0; 
    size_t numberOfPcFroms = 0; 
    if (Str_getLength(pcFrom) == 0) {
-      printf("%s\n",pcLine ); 
+      printf("%s",pcLine ); 
       return 0; 
    }
 
@@ -66,7 +66,7 @@ static size_t replaceAndWrite(const char pcLine [],
       else printf("%c", pcLine[uLength]); 
       uLength++; 
    }
-   printf("%c", '\n'); 
+   /*printf("%c", '\n');  */
 
    return numberOfPcFroms;   
 
