@@ -1,6 +1,6 @@
 /*--------------------------------------------------------------------*/
 /* replace.c                                                          */
-/* Author: ???                                                        */
+/* Author: Ben Zhou                                                        */
 /*--------------------------------------------------------------------*/
 
 #include "str.h"
@@ -17,10 +17,63 @@
    assumptions about the maximum number of replacements or the
    maximum number of characters in strings pcLine, pcFrom, or pcTo. */
 
-static size_t replaceAndWrite(const char *pcLine,
-                              const char *pcFrom, const char *pcTo)
+static size_t replaceAndWrite(const char pcLine [],
+                              const char pcFrom [], const char pcTo [])
 {
-   /* Insert your code here. */
+   size_t isContained = 0;
+   size_t uLength = 0; 
+   size_t pcLineSize = Str_getLength(pcLine); 
+   size_t pcFromSize = Str_getLength(pcFrom); 
+   size_t pcToSize = Str_getLength(pcTo); 
+   size_t iterator = 0; 
+   size_t numberOfPcFroms = 0; 
+   if (Str_getLength(pcFrom) == 0) {
+      printf("%s\n",pcLine ); 
+      return 0; 
+   }
+
+   while (uLength <= pcLineSize - pcFromSize) {
+      if (pcLine[uLength] == pcFrom[0]) { 
+         isContained = 1; 
+         iterator = 1; 
+         while (iterator < pcFromSize) { 
+            if (pcFrom[iterator] != pcLine[uLength + iterator]) { 
+               isContained = 0; 
+            }
+            iterator++; 
+         }
+         iterator = 0; 
+         
+         if (isContained == 1) { 
+            numberOfPcFroms++; 
+            while (iterator < pcToSize) {
+               printf("%c", pcTo[iterator]); 
+               iterator++; 
+               uLength++; 
+            }
+         }
+         else { 
+            while (iterator < pcFromSize) {
+               printf("%c", pcFrom[iterator]);
+               iterator++; 
+               uLength++; 
+            }
+
+         }
+         
+      } 
+      else print(pcLine[uLength]); 
+      uLength++; 
+   }
+
+   return numberOfPcFroms;   
+
+
+
+
+
+
+
 }
 
 /*--------------------------------------------------------------------*/
@@ -55,8 +108,9 @@ int main(int argc, char *argv[])
    pcFrom = argv[1];
    pcTo = argv[2];
 
-   while (fgets(acLine, MAX_LINE_SIZE, stdin) != NULL)
-      /* Insert your code here. */
+   while (fgets(acLine, MAX_LINE_SIZE, stdin) != NULL) 
+      uReplaceCount = replaceAndWrite(acLine, pcFrom, pcTo); 
+   
 
    fprintf(stderr, "%lu replacements\n", (unsigned long)uReplaceCount);
    return 0;
