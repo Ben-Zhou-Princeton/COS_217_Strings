@@ -49,19 +49,20 @@ static size_t replaceAndWrite(const char pcLine [],
             while (iterator < pcToSize) {
                printf("%c", pcTo[iterator]); 
                iterator++; 
-               uLength++; 
             }
          }
          else { 
             while (iterator < pcFromSize) {
                printf("%c", pcFrom[iterator]);
                iterator++; 
-               uLength++; 
             }
 
          }
+         uLength = uLength + pcFromSize; 
          
       } 
+
+
       else printf("%c", pcLine[uLength]); 
       uLength++; 
    }
