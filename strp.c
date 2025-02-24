@@ -82,7 +82,7 @@ char *Str_search(const char *haystack, const char *needle) {
     while (*haystackEnd != '\0') { 
         if (*haystackEnd == *needleEnd) { 
             isContained = 1; 
-            haystackTracker = *haystackEnd; 
+            haystackTracker = haystackEnd; 
             while (*haystackTracker != '\0' && *needleEnd != '\0') { 
                 if (*haystackEnd != *needleEnd) { 
                     isContained = 0; 
