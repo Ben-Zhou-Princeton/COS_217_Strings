@@ -67,10 +67,75 @@ int Str_compare(const char *str1, const char *str2) {
 
 }
 char *Str_search(const char *haystack, const char *needle) { 
-    return "abcde"; 
+    const char *haystackEnd; 
+    const char *needleEnd; 
+    const char **haystackTracker; 
+    assert(haystackEnd != NULL && needleEnd != NULL); 
+    size_t haystackSize = Str_getLength(haystack);
+    size_t needleSize = Str_getLength(needle); 
+    size_t isContained; 
+    haystackEnd = haystack; 
+    needleEnd = needle; 
+    
+    if (needleSize == 0) return (char*) haystackEnd; 
+    if (haystackSize < needleSize) return NULL;
+    while (*haystackEnd != '\0') { 
+        if (*haystackEnd == *needleEnd) { 
+            isContained = 1; 
+            haystackTracker = haystackEnd; 
+            while (*haystackTracker != '\0' && *needleEnd != '\0') { 
+                if (*haystackEnd != *needleEnd) { 
+                    isContained = 0; 
+                    break; 
+                } 
+                needleEnd++;
+                haystackTracker++; 
+            }
+        }
+        if (isContained == 1) { 
+            return (char*) haystackEnd; 
+        }
+        haystackEnd++; 
+    }
+    return NULL; 
+
+
+
+
 
 }
+ /*
+ const char* pc = haystack;  
+    size_t isContained = 0;
+    size_t needleIteration = 1; 
+    size_t uLength = 0; 
+    size_t haystackSize = Str_getLength(haystack);
+    size_t needleSize = Str_getLength(needle); 
+    
+    assert(haystack != NULL && needle != NULL);
 
+    if (needleSize == 0) return (char*)pc; 
+    if (haystackSize < needleSize) return NULL;
+    while (uLength <= haystackSize - needleSize) {
+        if (*pc == needle[0]) { 
+            needleIteration = 1;
+            isContained = 1; 
+            while (needleIteration < needleSize ) { 
+                if (needle[needleIteration] != haystack[needleIteration + uLength]) { 
+                    isContained = 0; 
+                }
+                needleIteration++; 
+            }
+        }
+        if (isContained == 1) { 
+            return (char*)pc;  
+        }
+        pc++; 
+        uLength++; 
+    }
+
+    return NULL; 
+} */
 
 
  
