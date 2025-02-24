@@ -48,7 +48,8 @@ static size_t replaceAndWrite(const char pcLine [],
          
          if (isContained == 1) { 
             numberOfPcFroms++; 
-            while (iterator < pcToSize) {
+            if (pcToSize == 0) break; 
+             while (iterator < pcToSize) {
                printf("%c", pcTo[iterator]); 
                iterator++; 
             }
