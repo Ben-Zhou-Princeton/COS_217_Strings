@@ -30,7 +30,7 @@ char *Str_copy(char *dest, const char *src) {
 } 
 char *Str_concat(char *dest, const char *src) { 
     char *destEnd; 
-    char *srcEnd; 
+    const char *srcEnd; 
     assert(src != NULL && dest != NULL);
     destEnd = dest;
     srcEnd = src; 
