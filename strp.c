@@ -14,13 +14,17 @@ size_t Str_getLength(const char *pcSrc)
 }
 
 char *Str_copy(char *dest, const char *src) { 
+    char *destEnd; 
+    char *srcEnd; 
     assert(src != NULL && dest != NULL); 
-    while (*dest != '\0') { 
-        *dest = *src; 
-        src++; 
-        dest++;
+    destEnd = dest; 
+    srcEnd = src; 
+    while (*srcEnd != '\0') { 
+        *destEnd = *src; 
+        srcEnd++; 
+        destEnd++;
     } 
-    *dest = '\0'; 
+    *destEnd = '\0'; 
 
     return dest; 
 } 
