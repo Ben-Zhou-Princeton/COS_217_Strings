@@ -70,10 +70,10 @@ char *Str_search(const char *haystack, const char *needle) {
     const char *haystackEnd; 
     const char *needleEnd; 
     const char **haystackTracker; 
-    assert(haystackEnd != NULL && needleEnd != NULL); 
     size_t haystackSize = Str_getLength(haystack);
     size_t needleSize = Str_getLength(needle); 
     size_t isContained; 
+    assert(haystack != NULL && needle != NULL); 
     haystackEnd = haystack; 
     needleEnd = needle; 
     
