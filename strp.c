@@ -20,7 +20,7 @@ char *Str_copy(char *dest, const char *src) {
     destEnd = dest; 
     srcEnd = src; 
     while (*srcEnd != '\0') { 
-        *destEnd = *src; 
+        *destEnd = *srcEnd; 
         srcEnd++; 
         destEnd++;
     } 
