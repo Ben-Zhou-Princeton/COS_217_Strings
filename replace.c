@@ -46,60 +46,7 @@ static size_t replaceAndWrite(const char pcLine [],
 
     
 
-   /*
-   size_t isContained = 0;
-   size_t uLength = 0; 
-   assert(pcLine != NULL && pcFrom != NULL && pcTo != NULL); 
-   size_t pcLineSize = Str_getLength(pcLine); 
-   size_t pcFromSize = Str_getLength(pcFrom); 
-   size_t pcToSize = Str_getLength(pcTo); 
-   size_t iterator = 0; 
-   size_t numberOfPcFroms = 0; 
 
-   if (pcFromSize == 0) {
-      printf("%s",pcLine ); 
-      return 0; 
-   }
-
-   while (uLength < pcLineSize) {
-      if (pcLine[uLength] == pcFrom[0]) { 
-         isContained = 1; 
-         iterator = 1; 
-         while (iterator < pcFromSize && uLength + iterator < pcLineSize) { 
-            if (pcFrom[iterator] != pcLine[uLength + iterator]) { 
-               isContained = 0; 
-            }
-            iterator++; 
-         }
-
-         
-         if (isContained == 1 && iterator == pcFromSize) { 
-            uLength = uLength + pcFromSize; 
-            numberOfPcFroms++; 
-            iterator = 0; 
-             while (iterator < pcToSize) {
-               printf("%c", pcTo[iterator]); 
-               iterator++; 
-            }
-         }
-         else {
-            printf("%c", pcLine[uLength]); 
-            uLength++; 
-         } 
-          
-      } 
-
-
-      else { 
-      printf("%c", pcLine[uLength]); 
-      uLength++; 
-      } 
-
-   }
-
-   return numberOfPcFroms;   
-
-*/ 
 } 
 
 /*--------------------------------------------------------------------*/
