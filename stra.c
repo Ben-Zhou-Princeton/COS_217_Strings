@@ -1,3 +1,4 @@
+/* Implmentatio of str.h using array notation*/
 #include "str.h"
 #include <stddef.h>
 #include <assert.h>
@@ -19,6 +20,8 @@ char *Str_copy(char dest[], const char src[])
         dest[uLength] = src[uLength];
         uLength++; 
     }
+    /* adds the null terminator to the end, this is not 
+    done in the while loop */
     dest[uLength] = '\0'; 
      
     return dest; 
@@ -49,7 +52,9 @@ int Str_compare(const char str1[], const char str2[])  {
         } 
         uLength++; 
     }
-
+    /* Null terminator has a value of 0, so any other character
+    here would make it greater than the null terminator, handling
+    the case where the two strings are different lengths */
     if (str1[uLength] > str2[uLength]) return 1; 
     else if (str1[uLength] < str2[uLength]) return -1;
     return 0;
@@ -64,8 +69,9 @@ char *Str_search(const char haystack[], const char needle[]) {
     
     assert(haystack != NULL && needle != NULL);
 
-    if (needleSize == 0) return (char*) &haystack[0]; 
+    if (needleSize == 0) return (char*)&haystack[0]; 
     if (haystackSize < needleSize) return NULL;
+    
     while (uLength <= haystackSize - needleSize) {
         if (haystack[uLength] == needle[0]) { 
             needleIteration = 1;
@@ -73,6 +79,7 @@ char *Str_search(const char haystack[], const char needle[]) {
             while (needleIteration < needleSize ) { 
                 if (needle[needleIteration] != haystack[needleIteration + uLength]) { 
                     isContained = 0; 
+                    break; 
                 }
                 needleIteration++; 
             }
