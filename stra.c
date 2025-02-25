@@ -68,14 +68,17 @@ char *Str_search(const char haystack[], const char needle[]) {
     size_t needleSize = Str_getLength(needle); 
     
     assert(haystack != NULL && needle != NULL);
-
+    /* Corner case evaluation */
     if (needleSize == 0) return (char*)&haystack[0]; 
     if (haystackSize < needleSize) return NULL;
-    
+    /* Iterates through the haystack and when it identifies
+    that the char is the same as the beginning of the needle
+    if identifies if that segment is the same as the needle*/
     while (uLength <= haystackSize - needleSize) {
         if (haystack[uLength] == needle[0]) { 
             needleIteration = 1;
             isContained = 1; 
+            /* If this a false lead, break and move on*/
             while (needleIteration < needleSize ) { 
                 if (needle[needleIteration] != haystack[needleIteration + uLength]) { 
                     isContained = 0; 
