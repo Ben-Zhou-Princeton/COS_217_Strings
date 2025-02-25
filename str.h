@@ -2,12 +2,11 @@
 #include <stddef.h>
 #ifndef STR_INCLUDED
 #define STR_INCLUDED
-/* Returns the length of the provided string *pcSRC */
+/* Returns the length of the provided string pcSrc */
 size_t Str_getLength(const char *pcSrc);
-/* Copies the string src to the destination dest*/
+/* Copies the string src to the destination dest and returns dest */
 char *Str_copy(char *dest, const char *src); 
-/* Takes the String src and adds to the end of 
-the destination string dest */
+/* Takes the String src and adds to the end of string dest, returns dest */
 char *Str_concat(char *dest, const char *src);
 /* Compares the strings str1 and str2, and returns 0 if 
 they are the same, -1 if str1 is lexiographically
