@@ -31,12 +31,13 @@ static size_t replaceAndWrite(const char pcLine [],
       printf("%s",pcLine ); 
       return 0; 
    }
-
-   while ((foundPointer = Str_search(pLine, pcFrom)) != NULL ) { 
+   foundPointer = Str_search(pLine, pcFrom);
+   while (foundPointer != NULL ) { 
       printf("%.*s", (int)(foundPointer - pLine), pLine); 
       printf("%s", pcTo); 
       numberOfPcFroms++; 
       pLine = foundPointer + pcFromSize; 
+      foundPointer = Str_search(pLine, pcFrom);
    }
 
    printf("%.*s", (int)(pcLine - foundPointer), pLine); 
