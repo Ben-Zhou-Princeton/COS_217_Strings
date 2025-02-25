@@ -22,9 +22,10 @@ static size_t replaceAndWrite(const char pcLine [],
 {
    size_t numberOfPcFroms = 0; 
    size_t pcFromSize = Str_getLength(pcFrom); 
-   assert(pcLine != NULL && pcFrom != NULL && pcTo != NULL); 
-   const char *pLine = pcLine;
+   const char *pLine; 
    const char *foundPointer;
+   assert(pcLine != NULL && pcFrom != NULL && pcTo != NULL); 
+   pLine = pcLine;
    if (pcFromSize == 0) {
       printf("%s",pcLine ); 
       return 0; 
