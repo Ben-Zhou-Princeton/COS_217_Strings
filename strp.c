@@ -1,3 +1,4 @@
+/* Implmentatio of str.h using pointer notation*/
 #include "str.h"
 #include <stddef.h>
 #include <assert.h>
@@ -16,7 +17,8 @@ size_t Str_getLength(const char *pcSrc)
 char *Str_copy(char *dest, const char *src) { 
     char *destEnd; 
     const char *srcEnd; 
-    assert(src != NULL && dest != NULL); 
+    assert(src != NULL); 
+    assert(dest != NULL); 
     destEnd = dest; 
     srcEnd = src; 
     while (*srcEnd != '\0') { 
@@ -31,7 +33,8 @@ char *Str_copy(char *dest, const char *src) {
 char *Str_concat(char *dest, const char *src) { 
     char *destEnd; 
     const char *srcEnd; 
-    assert(src != NULL && dest != NULL);
+    assert(src != NULL);
+    assert(dest != NULL);
     destEnd = dest;
     srcEnd = src; 
     while (*destEnd != '\0') { 
@@ -48,7 +51,8 @@ char *Str_concat(char *dest, const char *src) {
 int Str_compare(const char *str1, const char *str2) { 
     const char *str1End; 
     const char *str2End; 
-    assert(str1 != NULL && str2 != NULL); 
+    assert(str1 != NULL); 
+    assert(str2 != NULL); 
     str1End = str1;
     str2End = str2; 
     while (*str1End != '\0' && *str2End != '\0') { 
@@ -73,18 +77,24 @@ char *Str_search(const char *haystack, const char *needle) {
     size_t haystackSize = Str_getLength(haystack);
     size_t needleSize = Str_getLength(needle); 
     size_t isContained = 0; 
-    assert(haystack != NULL && needle != NULL); 
+    assert(haystack != NULL);
+    assert(needle != NULL); 
     haystackEnd = haystack; 
     needleEnd = needle; 
     
     if (needleSize == 0) return (char*) haystackEnd; 
     if (haystackSize < needleSize) return NULL;
-
+    /*Iterates through the haystack, ending at the null terminating char*/
     while (*haystackEnd != '\0') { 
+        /*If the current haystack pointer is the same as the beginning of the 
+        needle pointer, we iterate through the haystack to the length of 
+        the needle, and */
         if (*haystackEnd == *needleEnd) {
             isContained = 1; 
             haystackTracker = haystackEnd; 
             while (*haystackTracker != '\0' && *needleEnd != '\0') { 
+                /* If the needle isn't at that current haystack
+                area, break out of loop*/
                 if (*haystackTracker != *needleEnd) { 
                     isContained = 0; 
                     break; 
@@ -92,7 +102,8 @@ char *Str_search(const char *haystack, const char *needle) {
                 needleEnd++;
                 haystackTracker++; 
             }
-        }
+        }  
+        /* Returns pointer to where the needle is */
         if (isContained == 1 && *needleEnd == '\0') { 
             return (char*) haystackEnd; 
         }
