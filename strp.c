@@ -72,7 +72,7 @@ char *Str_search(const char *haystack, const char *needle) {
     const char *haystackTracker; 
     size_t haystackSize = Str_getLength(haystack);
     size_t needleSize = Str_getLength(needle); 
-    size_t isContained; 
+    size_t isContained = 0; 
     assert(haystack != NULL && needle != NULL); 
     haystackEnd = haystack; 
     needleEnd = needle; 
@@ -108,38 +108,7 @@ char *Str_search(const char *haystack, const char *needle) {
 
 
 }
- /*
- const char* pc = haystack;  
-    size_t isContained = 0;
-    size_t needleIteration = 1; 
-    size_t uLength = 0; 
-    size_t haystackSize = Str_getLength(haystack);
-    size_t needleSize = Str_getLength(needle); 
-    
-    assert(haystack != NULL && needle != NULL);
 
-    if (needleSize == 0) return (char*)pc; 
-    if (haystackSize < needleSize) return NULL;
-    while (uLength <= haystackSize - needleSize) {
-        if (*pc == needle[0]) { 
-            needleIteration = 1;
-            isContained = 1; 
-            while (needleIteration < needleSize ) { 
-                if (needle[needleIteration] != haystack[needleIteration + uLength]) { 
-                    isContained = 0; 
-                }
-                needleIteration++; 
-            }
-        }
-        if (isContained == 1) { 
-            return (char*)pc;  
-        }
-        pc++; 
-        uLength++; 
-    }
-
-    return NULL; 
-} */
 
 
  
