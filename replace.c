@@ -20,15 +20,38 @@
 static size_t replaceAndWrite(const char pcLine [],
                               const char pcFrom [], const char pcTo [])
 {
+   size_t numberOfPcFroms = 0; 
+   size_t pcFromSize = Str_getLength(pcFrom); 
+   assert(pcLine != NULL && pcFrom != NULL && pcTo != NULL); 
+   const char *pLine = pcLine;
+   const char *foundPointer;
+   if (pcFromSize == 0) {
+      printf("%s",pcLine ); 
+      return 0; 
+   }
+   foundPointer = Str_search(pLine, pcFrom); 
+   while (foundPointer != NULL ) { 
+      printf("%.*s", (int)(foundPointer - pLine), pLine); 
+      printf("%s", pcTo); 
+      numberOfPcFroms++; 
+      pLine = foundPointer + pcFromSize; 
+      foundPointer = Str_search(pLine, pcFrom); 
+   }
+   return numberOfPcFroms; 
+
+    
+
+   /*
    size_t isContained = 0;
    size_t uLength = 0; 
+   assert(pcLine != NULL && pcFrom != NULL && pcTo != NULL); 
    size_t pcLineSize = Str_getLength(pcLine); 
    size_t pcFromSize = Str_getLength(pcFrom); 
    size_t pcToSize = Str_getLength(pcTo); 
    size_t iterator = 0; 
    size_t numberOfPcFroms = 0; 
 
-   if (Str_getLength(pcFrom) == 0) {
+   if (pcFromSize == 0) {
       printf("%s",pcLine ); 
       return 0; 
    }
@@ -71,13 +94,8 @@ static size_t replaceAndWrite(const char pcLine [],
 
    return numberOfPcFroms;   
 
-
-
-
-
-
-
-}
+*/ 
+} 
 
 /*--------------------------------------------------------------------*/
 
