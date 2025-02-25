@@ -26,17 +26,19 @@ static size_t replaceAndWrite(const char pcLine [],
    const char *foundPointer;
    assert(pcLine != NULL && pcFrom != NULL && pcTo != NULL); 
    pLine = pcLine;
+
    if (pcFromSize == 0) {
       printf("%s",pcLine ); 
       return 0; 
    }
+
    foundPointer = Str_search(pLine, pcFrom); 
    while (foundPointer != NULL ) { 
+      foundPointer = Str_search(pLine, pcFrom); 
       printf("%.*s", (int)(foundPointer - pLine), pLine); 
       printf("%s", pcTo); 
       numberOfPcFroms++; 
       pLine = foundPointer + pcFromSize; 
-      foundPointer = Str_search(pLine, pcFrom); 
    }
    return numberOfPcFroms; 
 
